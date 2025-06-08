@@ -1,0 +1,6 @@
+0, 0, Candy, 1.00
+0, 1, Chocolate, 1.50
+0, 2, Chips, 2.00
+0, 2, Cookies, 1.50
+1, 2, Soda, 2.50
+2, 2, Gum, 1.00

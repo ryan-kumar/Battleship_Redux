@@ -1,0 +1,14 @@
+#ifndef CATCH_CONFIG_MAIN
+#  define CATCH_CONFIG_MAIN
+#endif
+#include <map>
+#include <string>
+#include <vector>
+
+#include "catch.hpp"
+
+//////////////////////////////////////////////////////////////////////////
+// Test Cases
+//////////////////////////////////////////////////////////////////////////
+
+TEST_CASE("example case", "[ex]") { REQUIRE(true == true); }
