@@ -7,8 +7,13 @@ Ship::Ship(const Direction& dir,
   head_ = new Node(start_x_, start_y_);
   Node* curr = head_;
   for (unsigned int i = 1; i < size; ++i) {
-    Node* now =
-        new Node(start_x_ + i, start_y_ + i);  // needs to be changed prob
+    int x = (dir == Direction::kRight)  ? start_x_ + i
+            : (dir == Direction::kLeft) ? start_x_ - i
+                                        : start_x_;
+    int y = (dir == Direction::kDown) ? start_y_ + i
+            : (dir == Direction::kUp) ? start_y_ - i
+                                      : start_y_;
+    Node* now = new Node(x, y);  // needs to be changed prob
     curr->next_ = now;
     now->prev_ = curr;
     curr = now;
