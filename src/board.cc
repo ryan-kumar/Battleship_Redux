@@ -4,7 +4,7 @@
 
 Board::Board(unsigned int width, unsigned int height):
     width_(width), height_(height) {
-  board_.resize(height_, std::vector<bool>(width_, false));
+  board_.resize(height_, std::vector<Node*>(width_, nullptr));
 }
 
 void Board::PlaceShip(const Direction& dir,
@@ -14,7 +14,7 @@ void Board::PlaceShip(const Direction& dir,
   if (start_x > width_ || start_y > height_) {
     throw std::invalid_argument("Ship cannot be placed here!");
   }
-  int counted_cells = 0;
+  unsigned int counted_cells = 0;
   for (unsigned int i = 0; i < size; i++) {
     switch (dir) {
     case Direction::kRight: {

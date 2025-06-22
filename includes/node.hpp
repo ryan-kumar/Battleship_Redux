@@ -1,13 +1,14 @@
 #ifndef NODE_HPP
 #define NODE_HPP
 
+class Ship;
+
 struct Node {
-  unsigned int x_;
-  unsigned int y_;
+  Ship* owner_ = nullptr;
   Node* next_ = nullptr;
   Node* prev_ = nullptr;
   Node() = default;
-  Node(unsigned int x, unsigned int y): x_(x), y_(y){};
+  Node(Ship* owner): owner_(owner) {}
 };
 
 #endif
