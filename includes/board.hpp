@@ -11,6 +11,11 @@ enum Direction { kLeft, kRight, kUp, kDown };
 class Board {
 public:
   Board(unsigned int width, unsigned int height);
+  bool ValidatePlacement(const Direction& dir,  // author-defined helper; do not
+                                                // provide in starter code
+                         unsigned int start_x,
+                         unsigned int start_y,
+                         unsigned int size);
   void PlaceShip(const Direction& dir,
                  unsigned int start_x,
                  unsigned int start_y,

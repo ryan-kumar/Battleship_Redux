@@ -1,6 +1,8 @@
 #ifndef SHIP_HPP
 #define SHIP_HPP
 
+#include <vector>
+
 #include "node.hpp"
 
 class Ship {
@@ -9,7 +11,7 @@ public:
   Ship(const Ship& other) = delete;
   Ship& operator=(const Ship& other) = delete;
   ~Ship();
-
+  std::vector<Node*> GetNodes();
   void DestroyNode();  // may need modification
 
 private:

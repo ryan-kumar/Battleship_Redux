@@ -29,3 +29,12 @@ void Ship::DestroyNode() {
     tail_->next_ = nullptr;
   }
 }
+std::vector<Node*> Ship::GetNodes() {
+  std::vector<Node*> nodes;
+  Node* curr = head_;
+  for (unsigned int i = 0; i < size_; i++) {
+    nodes.push_back(curr);
+    curr = curr->next_;
+  }
+  return nodes;
+}
