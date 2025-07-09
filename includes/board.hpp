@@ -20,12 +20,14 @@ public:
                  unsigned int start_x,
                  unsigned int start_y,
                  unsigned int size);
+  bool DestroyNode(unsigned int x, unsigned int y);
+  bool PlayerStatus() { return ships_.empty(); }
 
 private:
   unsigned int width_ = 0;
   unsigned int height_ = 0;
+  std::vector<Ship> ships_;
   std::vector<std::vector<Node*>> board_;
-  std::set<Ship> ships_;
 };
 
 #endif

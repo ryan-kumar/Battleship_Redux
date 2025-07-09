@@ -44,6 +44,20 @@ void Board::PlaceShip(const Direction& dir,
                                                  : start_y;
     board_[y][x] = nodes[i];
   }
-
-  ships_.insert(ship);
+  ships_.push_back(ship);
+}
+bool Board::DestroyNode(unsigned int x, unsigned int y) {
+  if (x >= width_ || y >= height_) {
+    throw std::runtime_error("Out of bounds coordinates");
+  }
+  bool hit = (board_[y][x] != nullptr);
+  if (hit) {
+    auto* parent_ship = board_[y][x]->owner_;
+    parent_ship->DestroyNode(board_[y][x]);
+    if (parent_ship->Sunk()) {
+      /// remove it from the set
+    }
+    board_[y][x] = nullptr;
+  }
+  return hit;
 }

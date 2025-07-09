@@ -19,14 +19,24 @@ Ship::~Ship() {
   head_ = tail_ = nullptr;
 }
 
-void Ship::DestroyNode() {
-  Node* to_remove = tail_;
-  tail_ = tail_->prev_;
-  delete to_remove;
-  if (tail_ == nullptr) {
-    head_ = nullptr;
-  } else {
-    tail_->next_ = nullptr;
+void Ship::DestroyNode(Node* marked) {
+  Node* curr = head_;
+  for (unsigned int i = 0; i < size_; i++) {
+    if (&curr == &marked) {
+      auto* prev = curr->prev_;
+      auto* next = curr->next_;
+      if (!prev) {
+        next = head_;
+      }
+      next->prev_ = nullptr;
+      if (!next) {
+        prev = tail_;
+      }
+      prev->next_ = nullptr;
+      delete curr;
+      size_--;
+      break;
+    }
   }
 }
 std::vector<Node*> Ship::GetNodes() {
@@ -38,3 +48,5 @@ std::vector<Node*> Ship::GetNodes() {
   }
   return nodes;
 }
+
+bool Ship::operator<(const Ship& other) const { return size_ < other.size_; }
