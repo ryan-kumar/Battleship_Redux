@@ -1,5 +1,6 @@
 #include "board.hpp"
 
+#include <fstream>
 #include <stdexcept>
 
 Board::Board(unsigned int width, unsigned int height):
@@ -60,4 +61,17 @@ bool Board::DestroyNode(unsigned int x, unsigned int y) {
     board_[y][x] = nullptr;
   }
   return hit;
+}
+
+void Board::ToPpm(const std::string& path) {
+  std::ofstream ofs{path};
+  ofs << "P3\n" << width_ << " " << height_ << "\n255" << std::endl;
+
+  for (unsigned int i = 0; i < height_; ++i) {
+    for (unsigned int j = 0; j < width_; ++j) {
+      int color = (board_[i][j]) ? 0 : 255;
+      ofs << 0 << 0 << color << " ";
+    }
+    ofs << std::endl;
+  }
 }

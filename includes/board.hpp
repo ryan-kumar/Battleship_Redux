@@ -2,6 +2,7 @@
 #define BOARD_HPP
 
 #include <set>
+#include <string>
 #include <vector>
 
 #include "ship.hpp"
@@ -23,7 +24,7 @@ public:
                  unsigned int size);
   bool DestroyNode(unsigned int x, unsigned int y);
   bool PlayerStatus() const { return ships_.empty(); }
-  void ToPpm();  // optional: change to PNG
+  void ToPpm(const std::string& path);  // optional: change to PNG
 
 private:
   unsigned int width_ = 0;
