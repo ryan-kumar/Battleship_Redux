@@ -44,7 +44,7 @@ void Board::PlaceShip(const Direction& dir,
                                                  : start_y;
     board_[y][x] = nodes[i];
   }
-  ships_.push_back(ship);
+  // ships_.push_back(ship); //comeback later
 }
 bool Board::DestroyNode(unsigned int x, unsigned int y) {
   if (x >= width_ || y >= height_) {
@@ -55,7 +55,7 @@ bool Board::DestroyNode(unsigned int x, unsigned int y) {
     auto* parent_ship = board_[y][x]->owner_;
     parent_ship->DestroyNode(board_[y][x]);
     if (parent_ship->Sunk()) {
-      /// remove it from the set
+      /// remove it from the set or vector
     }
     board_[y][x] = nullptr;
   }

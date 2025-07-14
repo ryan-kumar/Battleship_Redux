@@ -10,6 +10,7 @@ enum Direction { kLeft, kRight, kUp, kDown };
 
 class Board {
 public:
+  Board() = default;
   Board(unsigned int width, unsigned int height);
   bool ValidatePlacement(const Direction& dir,  // author-defined helper; do not
                                                 // provide in starter code
@@ -21,7 +22,8 @@ public:
                  unsigned int start_y,
                  unsigned int size);
   bool DestroyNode(unsigned int x, unsigned int y);
-  bool PlayerStatus() { return ships_.empty(); }
+  bool PlayerStatus() const { return ships_.empty(); }
+  void ToPpm();  // optional: change to PNG
 
 private:
   unsigned int width_ = 0;
